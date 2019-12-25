@@ -7,14 +7,14 @@
       When user clicks on "Pay Bills" tab
     
 
-#    Scenario: Verify page title
-#      Then verify that page title is "Zero - Pay Bills"
-#
-#
-#    Scenario: Verify Successfully made Pay Operation message
-#      Then user selects "Wells Fargo" as payee type and "Credit Card" as account type
-#      Then user enters "29300"  as amount of money for payment and selects day as "10-10-2019"
-#      And verify pay operation message "The payment was successfully submitted." is displayed
+    Scenario: Verify page title
+      Then verify that page title is "Zero - Pay Bills"
+
+
+    Scenario: Verify Successfully made Pay Operation message
+      Then user selects "Wells Fargo" as payee type and "Credit Card" as account type
+      Then user enters "29300"  as amount of money for payment and selects day as "10-10-2019"
+      And verify pay operation message "The payment was successfully submitted." is displayed
 
 
 #      Not completed yet
