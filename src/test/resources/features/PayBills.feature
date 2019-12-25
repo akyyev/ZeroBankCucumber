@@ -21,5 +21,5 @@
     @negative_scenario
     Scenario: Verify pop-up window notification when we left blank date or amount
       Then user selects "Bank of America" as payee type and "Brokerage" as account type
-      Then user enters "!#&^$hjhh"  as amount of money for payment and selects day as ""
+      Then user enters "!#&^$cat"  as amount of money for payment and selects day as ""
       And verify pay operation message "The payment was successfully submitted." is displayed

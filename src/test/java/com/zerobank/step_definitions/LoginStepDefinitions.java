@@ -24,9 +24,20 @@ public class LoginStepDefinitions {
     }
 
     @Then("{string} page should be displayed")
-    public void page_should_be_displayed(String arg0) {
-        Assert.assertEquals(arg0, (new BasePage()).navigationTabs.get(0).getText());
+    public void page_should_be_displayed(String page) {
+        int i=0;
+        switch(page){
+            case "Account Summary": i=0; break;
+            case "Account Activity": i=1; break;
+            case "Transfer Funds": i=2; break;
+            case "Pay Bills": i=3; break;
+            case "My Money Map": i=4; break;
+            default: i=5; break;
+        }
+        Assert.assertEquals(page, (new BasePage()).navigationTabs.get(i).getText());
     }
+
+
 
     @Then("{string} error message needs to be displayed")
     public void error_message_needs_to_be_displayed(String string) {

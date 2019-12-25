@@ -1,16 +1,32 @@
 
-  Feature: Find Transactions in Account Activity
+@accounts_activity_navigation
+  Feature: Navigating to specific accounts in Accounts Activity
 
-    Scenario: Search date range
-      Given the user accesses the Find Transactions tab
-      When the user enters data range from "2012-09-01" to "2012-09-06"
-      And clicks search
-      Then results table should only show transactions dates between "2012-09-01" to "2012-09-06"
-      And the results should be sorted by most recent date
-      When the user enters date range from "2012-09-02" to "2012-09-06"
-      And clicks search
-      Then results table should only show transactions dates between "2012-09-02" to "2012-09-06"
-      And the results table should only not contain transactions dated "2012-09-01"
+    Background:
+      Given user is on login page
+      And user logs in with username "username" and password "password"
 
+     Scenario: Savings account redirect
+      When the user clicks on "Savings" link on the Account Summary page
+       Then "Account Activity" page should be displayed
+       And Account dropdown should have "Savings" selected
 
+     Scenario: Brokerage account redirect
+       When the user clicks on "Brokerage" link on the Account Summary page
+       Then "Account Activity" page should be displayed
+       And Account dropdown should have "Brokerage" selected
 
+    Scenario: Checking account redirect
+      When the user clicks on "Checking" link on the Account Summary page
+      Then "Account Activity" page should be displayed
+      And Account dropdown should have "Checking" selected
+
+    Scenario: Credit Card account redirect
+      When the user clicks on "Credit Card" link on the Account Summary page
+      Then "Account Activity" page should be displayed
+      And Account dropdown should have "Credit Card" selected
+
+    Scenario: Loan account redirect
+      When the user clicks on "Loan" link on the Account Summary page
+      Then "Account Activity" page should be displayed
+      And Account dropdown should have "Loan" selected
