@@ -7,6 +7,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
@@ -15,6 +16,28 @@ import java.util.Map;
 public class PayBillsStepDefinitions {
 
     PayBillsPage payBillsPage = new PayBillsPage();
+    int a;
+
+    @Then("verify pay operation error message {string} is displayed")
+    public void verify_pay_operation_error_message_is_displayed(String errorMessage) {
+        payBillsPage.payButton.click();
+        JavascriptExecutor javascriptExecutor = (JavascriptExecutor) Driver.getDriver();
+        String locator;
+        if(a==1){
+            locator = "sp_amount";
+        } else {
+            locator = "sp_date";
+        }
+        String actual = (String) javascriptExecutor.executeScript("return JSON.stringify(document.getElementById('"+locator+"').validationMessage);");
+        Assert.assertEquals("\""+errorMessage+"\"", actual);
+    }
+
+    @Then("user enters {string}  as amount of money for payment and selects day as {string}")
+    public void user_enters_as_amount_of_money_for_payment_and_selects_day_as(String amount, String day) {
+        payBillsPage.amountOfMoneyInputBox.sendKeys(amount);
+        payBillsPage.date.sendKeys(day);
+        a = (amount.isEmpty())? 1 : 2;
+    }
 
     @Then("user selects {string} as payee type and {string} as account type")
     public void user_selects_as_payee_type_and_as_account_type(String payeeName, String accountName) {
@@ -23,11 +46,7 @@ public class PayBillsStepDefinitions {
     }
 
 
-    @Then("user enters {string}  as amount of money for payment and selects day as {string}")
-    public void user_enters_as_amount_of_money_for_payment_and_selects_day_as(String amount, String day) {
-        payBillsPage.amountOfMoneyInputBox.sendKeys(amount);
-        payBillsPage.date.sendKeys(day);
-    }
+
 
     @Then("verify pay operation message {string} is displayed")
     public void verify_pay_operation_message_is_displayed(String message) {
