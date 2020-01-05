@@ -46,6 +46,7 @@ public class AccountsActivityStepDefinitions {
 
     @Then("Account dropdown should have {string} selected")
     public void account_dropdown_should_have_selected(String string) {
+        BrowserUtils.waitForPageToLoad(2);
         Assert.assertTrue(accountsActivityPage.isSelected(string));
     }
 

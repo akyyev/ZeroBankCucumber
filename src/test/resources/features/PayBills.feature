@@ -17,9 +17,8 @@
       And verify pay operation message "The payment was successfully submitted." is displayed
 
 
-#      Not completed yet
     @negative_scenario
     Scenario: Verify pop-up window notification when we left blank date or amount
       Then user selects "Bank of America" as payee type and "Brokerage" as account type
-      Then user enters "123"  as amount of money for payment and selects day as ""
+      Then user enters ""  as amount of money for payment and selects day as "2012-09-01"
       And verify pay operation error message "Please fill out this field." is displayed

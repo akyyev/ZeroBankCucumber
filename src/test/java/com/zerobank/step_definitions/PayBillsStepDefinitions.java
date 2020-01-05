@@ -7,6 +7,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.ui.Select;
 
@@ -16,27 +17,32 @@ import java.util.Map;
 public class PayBillsStepDefinitions {
 
     PayBillsPage payBillsPage = new PayBillsPage();
-    int a;
+    private int amountOrDay;
 
     @Then("verify pay operation error message {string} is displayed")
     public void verify_pay_operation_error_message_is_displayed(String errorMessage) {
         payBillsPage.payButton.click();
         JavascriptExecutor javascriptExecutor = (JavascriptExecutor) Driver.getDriver();
         String locator;
-        if(a==1){
+        if(amountOrDay==1){
             locator = "sp_amount";
         } else {
             locator = "sp_date";
         }
         String actual = (String) javascriptExecutor.executeScript("return JSON.stringify(document.getElementById('"+locator+"').validationMessage);");
-        Assert.assertEquals("\""+errorMessage+"\"", actual);
+        actual = actual.replace("\"", "");
+        Assert.assertEquals(errorMessage, actual);
+        //Alternative - from instructor
+//        String ac2 = Driver.getDriver().findElement(By.id(locator)).getAttribute("validationMessage");
+//        Assert.assertEquals(errorMessage, ac2);
+//        System.out.println(ac2);
     }
 
     @Then("user enters {string}  as amount of money for payment and selects day as {string}")
     public void user_enters_as_amount_of_money_for_payment_and_selects_day_as(String amount, String day) {
         payBillsPage.amountOfMoneyInputBox.sendKeys(amount);
         payBillsPage.date.sendKeys(day);
-        a = (amount.isEmpty())? 1 : 2;
+        amountOrDay = (amount.isEmpty())? 1 : 2;
     }
 
     @Then("user selects {string} as payee type and {string} as account type")
