@@ -32,7 +32,8 @@ public class LoginStepDefinitions {
             case "Transfer Funds": i=2; break;
             case "Pay Bills": i=3; break;
             case "My Money Map": i=4; break;
-            default: i=5; break;
+            case "Online Statements": i=5; break;
+            default: throw new RuntimeException("No such page!");
         }
         Assert.assertEquals(page, (new BasePage()).navigationTabs.get(i).getText());
     }

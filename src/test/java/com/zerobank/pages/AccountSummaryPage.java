@@ -35,6 +35,7 @@ public class AccountSummaryPage extends BasePage{
             case "Checking": checkingLink.click(); break;
             case "Credit Card": creditCardLink.click(); break;
             case "Loan": loanLink.click(); break;
+            default: throw new RuntimeException("No Such Account Type!");
         }
     }
 

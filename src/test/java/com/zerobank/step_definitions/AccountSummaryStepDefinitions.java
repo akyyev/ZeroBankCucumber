@@ -35,13 +35,8 @@ public class AccountSummaryStepDefinitions {
     }
 
     @When("the user clicks on {string} link on the Account Summary page")
-    public void the_user_clicks_on_link_on_the_Account_Summary_page(String string) {
-        accountSummaryPage.clickLink(string);
-    }
-
-    @Then("Account dropdown should have Brokerage selected")
-    public void account_dropdown_should_have_Brokerage_selected() {
-
+    public void the_user_clicks_on_link_on_the_Account_Summary_page(String accountType) {
+        accountSummaryPage.clickLink(accountType);
     }
 
 }

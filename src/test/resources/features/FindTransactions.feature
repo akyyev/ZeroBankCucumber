@@ -1,13 +1,12 @@
-
-  @transactions
+@transactions
 Feature: Find Transactions in Account Activity
 
-  Background: 
+  Background:
     Given user is on login page
     Then user logs in with username "username" and password "password"
     Then user clicks on "Account Activity" tab
     Given the user accesses the Find Transactions tab
-  
+
   Scenario: Search date range
     When the user enters date range from "2012-09-01" to "2012-09-06"
     And clicks search
