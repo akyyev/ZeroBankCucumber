@@ -8,6 +8,11 @@
     <artifactId>zerobank-automation</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
@@ -48,50 +53,84 @@
 
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M3</version>
-                <configuration>
-                    <includes>
-                        <include>**/CucumberRunner.java</include>
-                    </includes>
-                    <testFailureIgnore>true</testFailureIgnore>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>net.masterthought</groupId>
-                <artifactId>maven-cucumber-reporting</artifactId>
-                <version>4.9.0</version>
-                <executions>
-                    <execution>
-                        <id>execution</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <projectName>Cucumber HTML Reports</projectName>
-                            <outputDirectory>${project.build.directory}</outputDirectory>
-                            <inputDirectory>${project.build.directory}</inputDirectory>
-                            <jsonFiles>
-                                <param>**/cucumber*.json</param>
-                            </jsonFiles>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>7</source>
-                    <target>7</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+        <build>
+            <plugins>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>3.0.0-M4</version>
+                    <configuration>
+                        <includes>
+                            <include>**/CucumberRunner.java</include>
+                        </includes>
+                    </configuration>
+                </plugin>
+
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>11</source>
+                        <target>11</target>
+                    </configuration>
+                </plugin>
+
+            </plugins>
+        </build>
+
+        <!-- To run regression -->
+        <profiles>
+            <profile>
+                <id>Regression</id>
+                <build>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-surefire-plugin</artifactId>
+                            <version>3.0.0-M3</version>
+
+                            <configuration>
+                                <!-- These three lines of code will make your project run in parallel  -->
+                                <parallel>methods</parallel>
+                                <threadCount>1</threadCount>
+                                <perCoreThreadCount>false</perCoreThreadCount>
+                                <!--  End   -->
+                                <runOrder>alphabetical</runOrder>
+                                <includes>
+                                    <include>**/RegressionRunner.java</include>
+                                    <include>**/FailedRunner.java</include>
+                                </includes>
+                                <testFailureIgnore>true</testFailureIgnore>
+                            </configuration>
+                        </plugin>
+                        <!--  THis is for report-->
+                        <plugin>
+                            <groupId>net.masterthought</groupId>
+                            <artifactId>maven-cucumber-reporting</artifactId>
+                            <version>4.9.0</version>
+                            <executions>
+                                <execution>
+                                    <id>execution</id>
+                                    <phase>verify</phase>
+                                    <goals>
+                                        <goal>generate</goal>
+                                    </goals>
+                                    <configuration>
+                                        <projectName>Cucumber HTML Reports</projectName>
+                                        <outputDirectory>${project.build.directory}/regression/</outputDirectory>
+                                        <inputDirectory>${project.build.directory}</inputDirectory>
+                                        <jsonFiles>
+                                            <param>**/cucumber*.json</param>
+                                        </jsonFiles>
+                                    </configuration>
+                                </execution>
+                            </executions>
+                        </plugin>
+                    </plugins>
+                </build>
+            </profile>
+        </profiles>
 
 </project>

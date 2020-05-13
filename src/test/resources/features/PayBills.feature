@@ -7,6 +7,7 @@ Feature: Pay Bills
     When user clicks on "Pay Bills" tab
 
 
+    @smoke
   Scenario: Verify page title
     Then verify that page title is "Zero - Pay Bills"
 

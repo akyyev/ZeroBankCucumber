@@ -7,6 +7,7 @@ Feature: Add new payee under pay bills
     Then user clicks on "Pay Bills" tab
     And the user accesses the Add New Payee tab
 
+    @smoke
   Scenario: Add a new payee
     And creates new payee using following information
       | Payee name    | The Law Offices of Hyde, Price & Sharks |

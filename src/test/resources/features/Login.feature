@@ -1,6 +1,7 @@
 @login
 Feature: Login Functionality
 
+  @smoke
   Scenario: When user logs in with valid credentials, Account Summary page should be displayed
     Given user is on login page
     And user logs in with username "username" and password "password"

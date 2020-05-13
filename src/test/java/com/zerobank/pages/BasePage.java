@@ -15,7 +15,10 @@ public class BasePage {
 
     @FindBy(css = "[class='nav nav-tabs']>li")
     public List<WebElement> navigationTabs;
-    /*
+
+}
+
+ /*
         0. Account Summary
         1. Account Activity
         2. Transfer Funds
@@ -23,8 +26,3 @@ public class BasePage {
         4. My Money Map
         5. Online Statements
      */
-
-
-
-
-}

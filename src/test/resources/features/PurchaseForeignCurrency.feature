@@ -7,6 +7,7 @@ Feature: Purchase Foreign Currency
     Then user clicks on "Pay Bills" tab
     And the user accesses the Purchase Foreign Currency tab
 
+    @smoke
   Scenario: Available currencies
     Then following currencies should be available
       | Select One            |

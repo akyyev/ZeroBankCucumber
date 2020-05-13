@@ -7,6 +7,7 @@ Feature: Accounts Activity
     And user logs in with username "username" and password "password"
     When user clicks on "Account Activity" tab
 
+    @smoke
   Scenario: Account Activity Page title
     And verify that page title is "Zero - Account Activity"
 

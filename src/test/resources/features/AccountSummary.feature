@@ -8,7 +8,7 @@ Feature: Account Summary Display
   Scenario: Account Summary Page Title
     Then Account Summary page should have title as "Zero - Account Summary"
 
-
+    @smoke
   Scenario: Account types
     And verifies that account types are displayed
       | Cash Accounts       |
