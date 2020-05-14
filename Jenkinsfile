@@ -3,18 +3,23 @@ pipeline{
 
     stages {
         stage('Compile Stage'){
-            withMaven(maven: 'MAVEN_HOME'){
-                sh 'mvn clean compile'
+            steps {
+                withMaven(maven: 'MAVEN_HOME'){
+                                sh 'mvn clean compile'
+                }
             }
         }
 
         stage('Testing Stage'){
+            steps {
                 withMaven(maven: 'MAVEN_HOME'){
                     sh 'mvn test -P Regression'
                 }
+             }
         }
 
         stage('Email report'){
+            steps{
                 emailext body: '''<html>
                 <head>
                 	<title>Smoke Test report report</title>
@@ -36,5 +41,6 @@ pipeline{
                 </body>
                 </html>''', subject: '$BUILD_STATUS', to: 'akyyev222@gmail.com'
             }
+        }
     }
 }
