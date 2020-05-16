@@ -2,6 +2,7 @@ package com.zerobank.step_definitions;
 
 import com.zerobank.pages.BasePage;
 import com.zerobank.pages.LoginPage;
+
 import com.zerobank.utilities.ConfigurationReader;
 import com.zerobank.utilities.Driver;
 import io.cucumber.java.en.And;
@@ -37,7 +38,6 @@ public class LoginStepDefinitions {
         }
         Assert.assertEquals(page, (new BasePage()).navigationTabs.get(i).getText());
     }
-
 
 
     @Then("{string} error message needs to be displayed")
