@@ -11,6 +11,7 @@ Maven Commands:
     
     mvn verify -Dcucumber.options="--tags @smoke"
     mvn test -Dcucumber.options="--tags @smoke"
+    
 
 -Dcucumber.options="--tags @someTag" - provide scenarios that you want to run. No need to change CucumberRunner class.
 
@@ -26,3 +27,17 @@ To run regression test:
 
     mvn test -P Regression
 -P Regression => profile and name of the profile from pom.xml file.
+
+To run on specific browser it's helpful when you create jobs on jenkins
+So that you can create jobs for selenium grid (cross-browsing testing)
+How to do it?
+    1. Create driver options for remote (local->remote)
+    2. Configure jenkins (ec2-A)
+    2. Create jobs with mvn command: 
+        -- job1: test -Dbrowser=remote_firefox
+        -- job2: test -Dbrowser=remote_chrome
+        -- job3: test -Dbrowser=remote_edge
+        ....
+    3. Start node and hub (ec2-B)
+        
+

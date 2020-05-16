@@ -94,7 +94,7 @@
                             <configuration>
                                 <!-- These three lines of code will make your project run in parallel  -->
                                <parallel>methods</parallel>
-                               <threadCount>2</threadCount>
+                               <threadCount>3</threadCount>
                                <perCoreThreadCount>false</perCoreThreadCount>
                                 <!--  End   -->
                                 <runOrder>alphabetical</runOrder>
