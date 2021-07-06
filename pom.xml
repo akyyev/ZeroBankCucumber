@@ -96,6 +96,7 @@
                                <parallel>methods</parallel>
                                <threadCount>3</threadCount>
                                <perCoreThreadCount>false</perCoreThreadCount>
+<!--                                <forkCount>perThread</forkCount> -->
                                 <!--  End   -->
                                 <runOrder>alphabetical</runOrder>
                                 <includes>

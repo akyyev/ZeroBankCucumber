@@ -8,8 +8,13 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = {
                 "src/test/resources/features/AccountActivity.feature",
+                "src/test/resources/features/AccountActivityNavigation.feature",
+                "src/test/resources/features/AccountSummary.feature",
+                "src/test/resources/features/AddNewPayee.feature",
+                "src/test/resources/features/FindTransactions.feature",
                 "src/test/resources/features/Login.feature",
-                "src/test/resources/features/PayBills.feature"
+                "src/test/resources/features/PayBills.feature",
+                "src/test/resources/features/PurchaseForeignCurrency.feature",
         },
         glue = "com/zerobank/step_definitions",
         dryRun = false,

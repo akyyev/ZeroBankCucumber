@@ -79,6 +79,4 @@ public class PayBillsPage extends BasePage {
         select.selectByVisibleText(accountName);
     }
 
-
-
 }

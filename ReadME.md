@@ -28,9 +28,10 @@ To run regression test:
     mvn test -P Regression
 -P Regression => profile and name of the profile from pom.xml file.
 
-To run on specific browser it's helpful when you create jobs on jenkins
+To run on a specific browser, it's helpful when you create jobs on jenkins
 So that you can create jobs for selenium grid (cross-browsing testing)
 How to do it?
+
     1. Create driver options for remote (local->remote)
     2. Configure jenkins (ec2-A)
     2. Create jobs with mvn command: 

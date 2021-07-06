@@ -38,7 +38,9 @@ public class Driver {
             switch (browser){
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
-                    driverPool.set(new ChromeDriver());
+                    ChromeOptions options = new ChromeOptions();
+                    options.addArguments("--ignore-certificate-errors");
+                    driverPool.set(new ChromeDriver(options));
                     break;
                 case "chrome_headless":
                     WebDriverManager.chromedriver().setup();
